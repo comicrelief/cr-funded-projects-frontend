@@ -8,4 +8,4 @@ npm i -g preact-cli
 npm install -g preact
 
 echo "Running npm test"
-npm run test
+preact test
