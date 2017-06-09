@@ -1,6 +1,6 @@
 {
-  "name": "Preact PWA",
-  "short_name": "Preact PWA",
+  "name": "Comic Relief - Funded Projects",
+  "short_name": "Funded Projects",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
