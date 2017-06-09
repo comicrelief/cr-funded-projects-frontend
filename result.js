@@ -1,3 +1,5 @@
+import Currency from 'react-currency-formatter';
+
 export const Result = ({result}) => (
 
   <div className="result">
@@ -11,14 +13,14 @@ export const Result = ({result}) => (
           <div className="single-msg__image">
 
             <picture>
-              <source srcset="http://kidsblogclub.com/wp-content/uploads/2013/02/team-honk-comic-relief-postcard.jpg"
+              <source srcset="/assets/no_image.jpg"
                       media="all and (min-width: 1024px)" type="image/jpeg"/>
-              <source srcset="http://kidsblogclub.com/wp-content/uploads/2013/02/team-honk-comic-relief-postcard.jpg"
+              <source srcset="/assets/no_image.jpg"
                       media="all and (min-width: 740px)" type="image/jpeg"/>
-              <source srcset="http://kidsblogclub.com/wp-content/uploads/2013/02/team-honk-comic-relief-postcard.jpg"
+              <source srcset="/assets/no_image.jpg"
                       media="(min-width: 0px)" type="image/jpeg"/>
-              <img src="http://kidsblogclub.com/wp-content/uploads/2013/02/team-honk-comic-relief-postcard.jpg"
-                   alt="boring" typeof="foaf:Image"/>
+              <img src="/assets/no_image.jpg"
+                   typeof="foaf:Image"/>
             </picture>
 
           </div>
@@ -28,13 +30,22 @@ export const Result = ({result}) => (
             <div className="single-msg__copy">
 
               <div className="single-msg__title">
-                <h3><strong>{result.full_name}</strong></h3>
+                <h3><strong>{result._source.Name}</strong> <small>({result._source.Issue})</small></h3>
               </div>
 
               <div className="single-msg__body">
 
                 <p>
-                  {result.description}
+                  <strong>Grant ID:</strong> {result._source.GrantsProjectID}
+                </p>
+
+                <p>
+                  <strong>Start Date:</strong> {result._source.StartDate}
+                </p>
+
+                <p>
+                  <strong>Amount</strong>
+                  <Currency quantity={result._source.AmountAwarded} currency="GBP" pattern=" !##,### "/>
                 </p>
 
               </div>

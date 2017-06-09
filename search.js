@@ -2,16 +2,24 @@ import React, { Component } from 'preact'
 
 export default class Search extends Component {
 
+  /**
+   *
+   */
   constructor()
   {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
     this.state = {
-      inputField: ''
+      inputField: '',
+      searchTimeout: 0,
     };
   }
 
+  /**
+   *
+   * @param evt
+   */
   submitHandler(evt)
   {
     evt.preventDefault();
@@ -24,24 +32,38 @@ export default class Search extends Component {
     });
   }
 
+  /**
+   *
+   * @param event
+   */
   handleChange(event)
   {
-    this.props.searchHandler(event.target.value);
+    let self = this;
 
-    this.setState({
-      inputField: event.target.value
-    });
+    clearTimeout(self.state.searchTimeout);
+
+    self.state.searchTimeout = setTimeout(function () {
+      self.props.searchHandler(event.target.value);
+
+      self.setState({
+        inputField: event.target.value
+      });
+    }, 500);
   }
 
+  /**
+   *
+   * @returns {XML}
+   */
   render()
   {
     return (
       <div className="search-container">
         <form onSubmit={this.submitHandler}>
           <input type="text"
-                 placeholder="Search"
+                 placeholder="Search (e.g. Oxfam)"
                  value={this.state.inputField}
-                 onChange={this.handleChange} />
+                 onKeyUp={this.handleChange} />
         </form>
       </div>
     );
