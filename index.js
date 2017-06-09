@@ -1,4 +1,4 @@
-import './style';
+import './style.sass';
 import { Component } from 'preact';
 import { Result } from './result';
 import Search from './search';
