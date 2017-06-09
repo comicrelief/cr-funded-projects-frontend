@@ -8,7 +8,7 @@
     "build": "preact build",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
-    "test": "preact test"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
