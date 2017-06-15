@@ -34,20 +34,13 @@ export const Result = ({result}) => (
               </div>
 
               <div className="single-msg__body">
-
                 <p>
-                  <strong>Grant ID:</strong> {result._source.GrantsProjectID}
-                </p>
-
-                <p>
-                  <strong>Start Date:</strong> {result._source.StartDate}
-                </p>
-
-                <p>
+                  <strong>Grant ID:</strong> {result._source.GrantsProjectID} <br/>
+                  <strong>Start Date:</strong> {result._source.StartDate} <br/>
+                  <strong>Country:</strong> {result._source.CountryName} <br/>
                   <strong>Amount</strong>
                   <Currency quantity={result._source.AmountAwarded} currency="GBP" pattern=" !##,### "/>
                 </p>
-
               </div>
 
             </div>
