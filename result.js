@@ -37,7 +37,7 @@ export const Result = ({result}) => (
                 <p>
                   <strong>Grant ID:</strong> {result._source.GrantsProjectID} <br/>
                   <strong>Start Date:</strong> {result._source.StartDate} <br/>
-                  <strong>Country:</strong> {result._source.CountryName} <br/>
+                  <strong>Country:</strong> {result._source.CountryName} <i>Lat: {result._source.Lat}, Lng: {result._source.Lng}</i><br/>
                   <strong>Amount</strong>
                   <Currency quantity={result._source.AmountAwarded} currency="GBP" pattern=" !##,### "/>
                 </p>
