@@ -1,8 +1,11 @@
 import './style.sass';
 import { Component } from 'preact';
 import { Result } from './result';
+import GrantsMap from './map';
 import Search from './search';
 import Header from "./header";
+// Trick as per https://github.com/developit/preact-cli/issues/76 
+import 'leaflet/dist/leaflet.css';
 
 const SEARCH = 'https://1kfs7evxca.execute-api.eu-west-1.amazonaws.com/beta/grants';
 
@@ -69,9 +72,7 @@ export default class App extends Component
 
         <Search searchHandler={this.searchHandler} />
 
-        { results.map( result => (
-          <Result result={result} />
-        )) }
+        <GrantsMap results={results}/>
 
 			</div>
 		);
