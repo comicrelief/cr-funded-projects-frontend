@@ -70,7 +70,7 @@ export default class App extends Component
         <Header />
 
         <div className="paging-information">
-          <p>Page {pagination.page} of {pagination.pages}</p>
+          <p>{pagination.total} results - Page {pagination.page} of {pagination.pages}</p>
         </div>
 
         <Search searchHandler={this.searchHandler} />
