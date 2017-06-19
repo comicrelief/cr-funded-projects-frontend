@@ -30,16 +30,16 @@ export const Result = ({result}) => (
             <div className="single-msg__copy">
 
               <div className="single-msg__title">
-                <h3><strong>{result._source.Name}</strong> <small>({result._source.Issue})</small></h3>
+                <h3><strong>{result.name}</strong> <small>({result.issue})</small></h3>
               </div>
 
               <div className="single-msg__body">
                 <p>
-                  <strong>Grant ID:</strong> {result._source.GrantsProjectID} <br/>
-                  <strong>Start Date:</strong> {result._source.StartDate} <br/>
-                  <strong>Country:</strong> {result._source.CountryName} <i>Lat: {result._source.Lat}, Lng: {result._source.Lng}</i><br/>
+                  <strong>Grant ID:</strong> {result.grants_project_id} <br/>
+                  <strong>Start Date:</strong> {result.start_date} <br/>
+                  <strong>Country:</strong> {result.country_name} <i>Lat: {result.lat}, Lng: {result.lng}</i><br/>
                   <strong>Amount</strong>
-                  <Currency quantity={result._source.AmountAwarded} currency="GBP" pattern=" !##,### "/>
+                  <Currency quantity={result.ammount_awarded} currency="GBP" pattern=" !##,### "/>
                 </p>
               </div>
 

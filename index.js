@@ -31,7 +31,8 @@ export default class App extends Component
       .then( r => r.json() )
       .then( json => {
         this.setState({
-          results: json && json.data || []
+          pagination: json && json.data && json.data.pagination || [],
+          results: json && json.data && json.data.grants || []
         });
       });
 	}
@@ -57,9 +58,10 @@ export default class App extends Component
    *
    * @param props
    * @param results
+   * @param pagination
    * @returns {XML}
    */
-	render(props, { results=[] })
+	render(props, { results=[], pagination=[] })
 	{
 		return (
 
@@ -67,10 +69,14 @@ export default class App extends Component
 
         <Header />
 
+        <div className="paging-information">
+          <p>Page {pagination.page} of {pagination.pages}</p>
+        </div>
+
         <Search searchHandler={this.searchHandler} />
 
         { results.map( result => (
-          <Result result={result} />
+          <Result result={result.data} />
         )) }
 
 			</div>
