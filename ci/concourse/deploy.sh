@@ -21,4 +21,4 @@ aws s3 sync ./build s3://cr-projects-$3 --acl=public-read
 
 # Remove the aws cli
 rm -rf ./aws-cli
-echo "Deployed site to http://cr-projects-$3.s3-website-us-west-1.amazonaws.com"
+echo "Deployed site to http://cr-projects-$3.s3-website-eu-west-1.amazonaws.com"
