@@ -6,7 +6,7 @@ image_resource:
   source: {repository: comicrelief/node-sls, tag: "latest"}
 
 inputs:
-  - name: serverless-grants-api
+  - name: funded-projects-frontend
     path: repo
 
 run:
