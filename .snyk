@@ -1,0 +1,11 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:marked:20170112':
+    - '@comicrelief/pattern-lab > grunt-kss > kss > marked':
+        patched: '2017-07-16T10:09:59.351Z'
+  'npm:qs:20140806-1':
+    - '@comicrelief/pattern-lab > grunt-connect > connect > qs':
+        patched: '2017-07-16T10:09:59.351Z'
