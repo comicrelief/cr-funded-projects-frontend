@@ -4,7 +4,10 @@ import { Result } from './result';
 import Search from './search';
 import Header from "./header";
 
-const SEARCH = 'https://1kfs7evxca.execute-api.eu-west-1.amazonaws.com/beta/grants';
+// const SEARCH = 'https://1kfs7evxca.execute-api.eu-west-1.amazonaws.com/beta/grants';
+const SEARCH = 'https://1kfs7evxca.execute-api.eu-west-1.amazonaws.com/beta/grants-geo';
+const POSTCODE_API = 'https://api.postcodes.io';
+
 
 export default class App extends Component
 {
@@ -24,16 +27,21 @@ export default class App extends Component
    * @returns {Promise.<TResult>}
    * @private
    */
-	_search(searchTerm)
+	_search(searchTerm, range)
 	{
-	  let query = searchTerm.length >= 1 ? (SEARCH + '?search=' + searchTerm) : SEARCH;
-		return fetch(`${query}`)
+    let query = POSTCODE_API + '/postcodes/' + searchTerm;
+    fetch(`${query}`)
       .then( r => r.json() )
-      .then( json => {
-        this.setState({
-          pagination: json && json.data && json.data.pagination || [],
-          results: json && json.data && json.data.grants || []
-        });
+      .then(json => {
+    	  let query2 = searchTerm.length >= 1 ? (SEARCH + '?latitude=' + json.result.latitude + '&longitude=' + json.result.longitude) + '&range=25km' : SEARCH;
+        return fetch(`${query2}`)
+          .then( r => r.json() )
+          .then( json => {
+            this.setState({
+              pagination: json && json.data && json.data.pagination || [],
+              results: json && json.data && json.data.grants || []
+            });
+          });
       });
 	}
 
@@ -41,9 +49,9 @@ export default class App extends Component
    *
    * @param data
    */
-  searchHandler(data)
+  searchHandler(data, range)
   {
-    this._search(data)
+    this._search(data, range)
   }
 
   /**

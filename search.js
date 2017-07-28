@@ -1,5 +1,6 @@
 import React, { Component } from 'preact'
 
+
 export default class Search extends Component {
 
   /**
@@ -12,6 +13,7 @@ export default class Search extends Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.state = {
       inputField: '',
+      range: '5',
       searchTimeout: 0,
     };
   }
@@ -25,10 +27,11 @@ export default class Search extends Component {
     evt.preventDefault();
     // pass the input field value to the event handler passed
     // as a prop by the parent (App)
-    this.props.searchHandler(this.state.inputField);
+    this.props.searchHandler(this.state.inputField, this.state.range);
 
     this.setState({
-      inputField: ''
+      inputField: '',
+      range: '',
     });
   }
 
@@ -44,12 +47,13 @@ export default class Search extends Component {
 
     self.state.searchTimeout = setTimeout(function () {
       self.props.searchHandler(event.target.value);
-
       self.setState({
         inputField: event.target.value
       });
     }, 500);
   }
+
+
 
   /**
    *
@@ -61,7 +65,7 @@ export default class Search extends Component {
       <div className="search-container">
         <form onSubmit={this.submitHandler}>
           <input type="text"
-                 placeholder="Search (e.g. Oxfam)"
+                 placeholder="Postcode Search (e.g. N4 2HR)"
                  value={this.state.inputField}
                  onKeyUp={this.handleChange} />
         </form>
