@@ -65,7 +65,7 @@ export default class Search extends Component {
       <div className="search-container">
         <form onSubmit={this.submitHandler}>
           <input type="text"
-                 placeholder="Postcode Search (e.g. N4 2HR)"
+                 placeholder="Postcode Search (e.g. SE17TP)"
                  value={this.state.inputField}
                  onKeyUp={this.handleChange} />
         </form>
