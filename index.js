@@ -29,7 +29,7 @@ export default class App extends Component
    */
 	_search(searchTerm, range)
 	{
-    if (searchTerm.length != 5) return;
+    if (searchTerm.length < 5) return;
     let query = POSTCODE_API + '/postcodes/' + searchTerm;
     fetch(`${query}`)
       .then( r => r.json() )
