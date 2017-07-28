@@ -29,12 +29,13 @@ export default class App extends Component
    */
 	_search(searchTerm, range)
 	{
+    if (searchTerm.length != 5) return;
     let query = POSTCODE_API + '/postcodes/' + searchTerm;
     fetch(`${query}`)
       .then( r => r.json() )
       .then(json => {
-    	  let query2 = searchTerm.length >= 1 ? (SEARCH + '?latitude=' + json.result.latitude + '&longitude=' + json.result.longitude) + '&range=25km' : SEARCH;
-        return fetch(`${query2}`)
+    	  let query = searchTerm.length >= 1 ? (SEARCH + '?latitude=' + json.result.latitude + '&longitude=' + json.result.longitude) + '&range=' + range + 'km' : SEARCH;
+        return fetch(`${query}`)
           .then( r => r.json() )
           .then( json => {
             this.setState({
@@ -59,7 +60,7 @@ export default class App extends Component
    */
 	componentDidMount()
 	{
-		this._search('');
+		this._search('', 5);
 	}
 
   /**
