@@ -22,14 +22,12 @@ export default class App extends Component
   }
 
   /**
-   *
    * @param searchTerm
-   * @returns {Promise.<TResult>}
+   * @param range
    * @private
    */
 	_search(searchTerm, range)
 	{
-    if (searchTerm.length < 5) return;
     let query = POSTCODE_API + '/postcodes/' + searchTerm;
     fetch(`${query}`)
       .then( r => r.json() )

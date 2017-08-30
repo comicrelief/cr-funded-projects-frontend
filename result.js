@@ -1,5 +1,12 @@
 import Currency from 'react-currency-formatter';
 
+function convertUnicode(input) {
+  return input.replace(/\\u(\w\w\w\w)/g,function(a,b) {
+    var charcode = parseInt(b,16);
+    return String.fromCharCode(charcode);
+  });
+}
+
 export const Result = ({result}) => (
 
   <div className="result">
@@ -30,7 +37,7 @@ export const Result = ({result}) => (
             <div className="single-msg__copy">
 
               <div className="single-msg__title">
-                <h3><strong>{result.name}</strong> <small>({result.issue})</small></h3>
+                <h3><strong dangerouslySetInnerHTML={{ __html: convertUnicode(result.name)}}/> <small>({result.issue})</small></h3>
               </div>
 
               <div className="single-msg__body">
