@@ -8,7 +8,9 @@
     "build": "preact build",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
-    "test": "jest"
+    "test": "jest",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,8 @@
     "preact-compat": "^3.16.0",
     "preact-router": "^2.5.2",
     "react-currency-formatter": "^0.1.1",
-    "sass-loader": "^6.0.5"
-  }
+    "sass-loader": "^6.0.5",
+    "snyk": "^1.134.2"
+  },
+  "snyk": true
 }
